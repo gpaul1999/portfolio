@@ -48,32 +48,32 @@ export default async function ProjectPage({
         <div className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6">
           <a
             href={`/${lang}#projects`}
-            className="text-sm font-medium text-muted transition-colors hover:text-foreground"
+            className="text-sm font-medium text-muted transition hover:-translate-y-0.5 hover:text-foreground"
           >
             ← {t(ui.projects.backToProjects, lang)}
           </a>
 
-          <h1 className="mt-6 font-serif text-3xl font-medium tracking-tight sm:text-5xl">
+          <h1 className="mt-6 font-serif text-3xl font-medium sm:text-5xl">
             {t(project.title, lang)}
           </h1>
           <p className="mt-3 text-accent-strong">{t(project.subtitle, lang)}</p>
 
           {/* Meta blocks */}
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            <div className="rounded-2xl border border-border-soft bg-surface p-5">
-              <p className="text-xs font-medium uppercase tracking-wide text-muted">
+            <div className="surface-lift rounded-2xl border border-border-soft bg-surface p-5">
+              <p className="text-xs font-medium uppercase text-muted">
                 {t(ui.projects.role, lang)}
               </p>
               <p className="mt-1 font-serif">{t(study.role, lang)}</p>
             </div>
-            <div className="rounded-2xl border border-border-soft bg-surface p-5">
-              <p className="text-xs font-medium uppercase tracking-wide text-muted">
+            <div className="surface-lift rounded-2xl border border-border-soft bg-surface p-5">
+              <p className="text-xs font-medium uppercase text-muted">
                 {t(ui.projects.team, lang)}
               </p>
               <p className="mt-1 font-serif">{t(study.team, lang)}</p>
             </div>
-            <div className="rounded-2xl border border-border-soft bg-surface p-5">
-              <p className="text-xs font-medium uppercase tracking-wide text-muted">
+            <div className="surface-lift rounded-2xl border border-border-soft bg-surface p-5">
+              <p className="text-xs font-medium uppercase text-muted">
                 {t(ui.projects.techStack, lang)}
               </p>
               <p className="mt-1 font-mono text-xs leading-relaxed text-muted">
@@ -88,7 +88,7 @@ export default async function ProjectPage({
               <h2 className="mb-4 font-serif text-2xl font-medium">
                 {t(ui.projects.architecture, lang)}
               </h2>
-              <div className="overflow-x-auto rounded-2xl border border-border-soft bg-surface p-4 sm:p-8">
+              <div className="surface-lift overflow-x-auto rounded-2xl border border-border-soft bg-surface p-4 sm:p-8">
                 <Diagram />
               </div>
             </section>
@@ -130,7 +130,7 @@ export default async function ProjectPage({
               {study.results.map((result) => (
                 <div
                   key={result.en}
-                  className="rounded-2xl border border-border-soft bg-accent-soft p-5 text-sm leading-relaxed"
+                  className="surface-lift rounded-2xl border border-border-soft bg-accent-soft p-5 text-sm leading-relaxed"
                 >
                   {t(result, lang)}
                 </div>

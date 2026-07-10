@@ -6,8 +6,8 @@ export default function Education({ lang }: { lang: Lang }) {
   return (
     <Section id="education" title={t(ui.sections.education, lang)}>
       <div className="grid gap-4 md:grid-cols-2">
-        <div className="rounded-2xl border border-border-soft bg-surface p-6">
-          <p className="text-xs font-medium uppercase tracking-wide text-muted">
+        <div className="surface-lift rounded-2xl border border-border-soft bg-surface p-6">
+          <p className="text-xs font-medium uppercase text-muted">
             {t(ui.education.certifications, lang)}
           </p>
           <ul className="mt-3 flex flex-col gap-2">
@@ -19,8 +19,8 @@ export default function Education({ lang }: { lang: Lang }) {
             ))}
           </ul>
         </div>
-        <div className="rounded-2xl border border-border-soft bg-accent-soft p-6">
-          <p className="text-xs font-medium uppercase tracking-wide text-accent-strong">
+        <div className="surface-lift rounded-2xl border border-border-soft bg-accent-soft p-6">
+          <p className="text-xs font-medium uppercase text-accent-strong">
             {t(ui.education.awards, lang)}
           </p>
           <ul className="mt-3 flex flex-col gap-2">

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Lora } from "next/font/google";
 import { notFound } from "next/navigation";
+import CustomCursor from "@/components/CustomCursor";
+import NextDevtoolsPolish from "@/components/NextDevtoolsPolish";
 import { site } from "@/data/site";
 import { isLang, langs } from "@/lib/i18n";
 import "../globals.css";
@@ -51,7 +53,11 @@ export default async function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <CustomCursor />
+        <NextDevtoolsPolish />
+        {children}
+      </body>
     </html>
   );
 }

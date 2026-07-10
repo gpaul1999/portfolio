@@ -15,16 +15,24 @@ export default function LanguageToggle({ lang }: { lang: Lang }) {
   }
 
   return (
-    <div className="flex items-center rounded-xl border border-border-soft bg-surface p-0.5 text-xs font-medium">
+    <div
+      className="relative flex h-10 items-center rounded-xl border border-border-soft bg-surface p-1 text-xs font-semibold uppercase text-muted shadow-soft"
+      aria-label="Language"
+    >
+      <span
+        aria-hidden="true"
+        className={`absolute bottom-1 top-1 w-[calc(50%-0.25rem)] rounded-lg bg-accent shadow-soft transition-transform duration-200 ${
+          lang === "vi" ? "translate-x-full" : "translate-x-0"
+        }`}
+      />
       {(["en", "vi"] as Lang[]).map((code) => (
         <button
           key={code}
+          type="button"
           onClick={() => switchTo(code)}
           aria-pressed={lang === code}
-          className={`rounded-[10px] px-2.5 py-1.5 uppercase transition-colors ${
-            lang === code
-              ? "bg-accent text-white"
-              : "text-muted hover:text-foreground"
+          className={`relative z-10 grid h-8 min-w-9 place-items-center rounded-lg px-2 transition ${
+            lang === code ? "text-white" : "hover:text-foreground"
           }`}
         >
           {code}

@@ -11,7 +11,7 @@ export default function Contact({ lang }: { lang: Lang }) {
 
   return (
     <Section id="contact" title={t(ui.sections.contact, lang)}>
-      <div className="rounded-3xl border border-border-soft bg-accent-soft p-8 text-center sm:p-14">
+      <div className="surface-lift rounded-3xl border border-border-soft bg-accent-soft p-8 text-center sm:p-14">
         <h3 className="font-serif text-2xl font-medium sm:text-4xl">
           {t(ui.contact.heading, lang)}
         </h3>
@@ -21,7 +21,7 @@ export default function Contact({ lang }: { lang: Lang }) {
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <a
             href={`mailto:${site.email}`}
-            className="rounded-xl bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-strong"
+            className="action-link rounded-xl bg-accent px-6 py-3 text-sm font-medium text-white hover:bg-accent-strong"
           >
             {site.email}
           </a>
@@ -31,7 +31,7 @@ export default function Contact({ lang }: { lang: Lang }) {
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-xl border border-border-soft bg-background px-5 py-3 text-sm font-medium transition-colors hover:bg-surface-2"
+              className="action-link rounded-xl border border-border-soft bg-background px-5 py-3 text-sm font-medium hover:bg-surface-2"
             >
               {s.label} ↗
             </a>

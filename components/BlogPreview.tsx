@@ -13,7 +13,7 @@ export default function BlogPreview({ lang }: { lang: Lang }) {
           <a
             key={post.slug}
             href={`/${lang}/blog/${post.slug}`}
-            className="group flex flex-col rounded-2xl border border-border-soft bg-surface p-6 transition-colors hover:border-accent sm:p-8"
+            className="surface-lift group flex flex-col rounded-2xl border border-border-soft bg-surface p-6 hover:border-accent sm:p-8"
           >
             <p className="font-mono text-xs text-muted">
               {formatDate(post.date, lang)} · {post.readingMinutes}{" "}
@@ -34,7 +34,7 @@ export default function BlogPreview({ lang }: { lang: Lang }) {
       <div className="mt-6 text-center">
         <a
           href={`/${lang}/blog`}
-          className="inline-block rounded-xl border border-border-soft bg-surface px-5 py-2.5 text-sm font-medium transition-colors hover:bg-surface-2"
+          className="action-link rounded-xl border border-border-soft bg-surface px-5 py-2.5 text-sm font-medium hover:bg-surface-2"
         >
           {t(ui.blog.viewAll, lang)} →
         </a>

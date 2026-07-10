@@ -32,7 +32,7 @@ export default async function BlogIndex({
       <Header lang={lang} />
       <main className="flex-1">
         <div className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6">
-          <h1 className="font-serif text-3xl font-medium tracking-tight sm:text-5xl">
+          <h1 className="font-serif text-3xl font-medium sm:text-5xl">
             {t(ui.blog.title, lang)}
           </h1>
           <p className="mt-4 max-w-2xl leading-relaxed text-muted">
@@ -44,7 +44,7 @@ export default async function BlogIndex({
               <a
                 key={post.slug}
                 href={`/${lang}/blog/${post.slug}`}
-                className="group rounded-2xl border border-border-soft bg-surface p-6 transition-colors hover:border-accent sm:p-8"
+                className="surface-lift group rounded-2xl border border-border-soft bg-surface p-6 hover:border-accent sm:p-8"
               >
                 <p className="font-mono text-xs text-muted">
                   {formatDate(post.date, lang)} · {post.readingMinutes}{" "}

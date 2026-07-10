@@ -270,21 +270,20 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "insurance-enterprise-platforms",
+    slug: "ggi-tokio-marine-insurance-platform",
     title: {
-      en: "Insurance Enterprise Platforms",
-      vi: "Nền tảng Bảo hiểm Doanh nghiệp",
+      en: "GGI Tokio Marine Insurance Platform",
+      vi: "Nền tảng Bảo hiểm GGI Tokio Marine",
     },
     subtitle: {
-      en: "Developer / Lead Developer · GGI Tokio Marine, MSIG Indonesia, PGA Philippines",
-      vi: "Developer / Lead Developer · GGI Tokio Marine, MSIG Indonesia, PGA Philippines",
+      en: "Lead Developer · Team of 3",
+      vi: "Lead Developer · Nhóm 3 người",
     },
     description: {
-      en: "Large-scale insurance systems for policy management, claims processing, and internal operational workflows, supporting large daily volumes of policy and claims transactions across three international clients.",
-      vi: "Các hệ thống bảo hiểm quy mô lớn cho quản lý hợp đồng, xử lý bồi thường và quy trình vận hành nội bộ, phục vụ khối lượng giao dịch hợp đồng và bồi thường lớn mỗi ngày cho ba khách hàng quốc tế.",
+      en: "A joint-venture insurance platform combining domestic and global expertise, focused on maintaining core application components, production stability, and feature delivery.",
+      vi: "Nền tảng bảo hiểm liên doanh kết hợp chuyên môn nội địa và quốc tế, tập trung vào bảo trì các thành phần lõi, ổn định production và triển khai tính năng.",
     },
     tech: [
-      "Spring Boot",
       "Spring MVC",
       "Hibernate / JPA",
       "Batch Jobs",
@@ -293,46 +292,171 @@ export const projects: Project[] = [
       "JasperReports",
     ],
     caseStudy: {
-      role: { en: "Developer / Lead Developer", vi: "Developer / Lead Developer" },
-      team: { en: "3–25 engineers per project", vi: "3–25 kỹ sư mỗi dự án" },
+      role: { en: "Lead Developer", vi: "Lead Developer" },
+      team: { en: "3 engineers", vi: "3 kỹ sư" },
       context: {
-        en: "At DXC Technology, I worked on enterprise insurance platforms for three international clients — GGI Tokio Marine, MSIG Indonesia, and PGA Philippines — covering policy management, claims processing, and internal operational workflows.",
-        vi: "Tại DXC Technology, tôi làm việc trên các nền tảng bảo hiểm doanh nghiệp cho ba khách hàng quốc tế — GGI Tokio Marine, MSIG Indonesia và PGA Philippines — bao phủ quản lý hợp đồng, xử lý bồi thường và quy trình vận hành nội bộ.",
+        en: "GGI Tokio Marine is a joint-venture insurance platform that combines domestic and global insurance expertise. The project required steady production support while continuing to evolve core application features.",
+        vi: "GGI Tokio Marine là nền tảng bảo hiểm liên doanh kết hợp chuyên môn bảo hiểm trong nước và quốc tế. Dự án cần vừa hỗ trợ production ổn định, vừa tiếp tục phát triển các tính năng lõi.",
       },
       problem: {
-        en: "Insurance platforms process large daily volumes of policy and claims transactions, with heavy nightly batch workloads. Slow queries and long batch windows directly delay business operations, and production uptime is contractual.",
-        vi: "Nền tảng bảo hiểm xử lý khối lượng lớn giao dịch hợp đồng và bồi thường mỗi ngày, kèm các batch job nặng chạy ban đêm. Truy vấn chậm và cửa sổ batch kéo dài ảnh hưởng trực tiếp đến vận hành, trong khi uptime production là cam kết hợp đồng.",
+        en: "The platform needed reliable maintenance for critical insurance workflows, fast resolution of production issues, and safe feature updates without interrupting daily business operations.",
+        vi: "Nền tảng cần được bảo trì ổn định cho các luồng nghiệp vụ bảo hiểm quan trọng, xử lý nhanh sự cố production và triển khai thay đổi an toàn mà không gián đoạn vận hành hằng ngày.",
       },
       solution: [
         {
-          en: "Developed and maintained policy and claims modules on Spring Boot / Spring MVC with Hibernate and JPA.",
-          vi: "Phát triển và bảo trì các mô-đun hợp đồng và bồi thường trên Spring Boot / Spring MVC với Hibernate và JPA.",
+          en: "Led development and maintenance of core application components using Spring MVC, Hibernate, JPA, SQL Server, Quartz, and JasperReports.",
+          vi: "Dẫn dắt phát triển và bảo trì các thành phần lõi bằng Spring MVC, Hibernate, JPA, SQL Server, Quartz và JasperReports.",
         },
         {
-          en: "Tuned queries, indexing strategies, and transaction handling on SQL Server.",
-          vi: "Tinh chỉnh truy vấn, chiến lược đánh index và xử lý giao dịch trên SQL Server.",
+          en: "Resolved production issues, debugged defects, and supported release updates for key insurance workflows.",
+          vi: "Xử lý sự cố production, debug lỗi và hỗ trợ release cho các luồng nghiệp vụ bảo hiểm chính.",
         },
         {
-          en: "Optimized scheduled batch jobs (Quartz) that drive nightly policy and claims processing.",
-          vi: "Tối ưu các batch job định kỳ (Quartz) phục vụ xử lý hợp đồng và bồi thường hằng đêm.",
-        },
-        {
-          en: "Built operational reports with JasperReports for business teams.",
-          vi: "Xây dựng báo cáo vận hành bằng JasperReports cho các bộ phận nghiệp vụ.",
+          en: "Coordinated implementation work within a small team to keep maintenance and feature delivery moving in parallel.",
+          vi: "Điều phối công việc trong nhóm nhỏ để vừa duy trì hệ thống vừa triển khai tính năng mới song song.",
         },
       ],
       results: [
         {
-          en: "Backend performance improved by 20% through query tuning, indexing, and transaction optimization",
-          vi: "Hiệu năng backend cải thiện 20% nhờ tinh chỉnh truy vấn, index và tối ưu giao dịch",
+          en: "Maintained seamless production operation for a live insurance platform",
+          vi: "Duy trì vận hành production ổn định cho nền tảng bảo hiểm đang hoạt động",
         },
         {
-          en: "Batch job execution time reduced by 25%",
-          vi: "Thời gian chạy batch job giảm 25%",
+          en: "Delivered feature updates while resolving defects in critical workflows",
+          vi: "Triển khai cập nhật tính năng song song với xử lý lỗi trong các luồng nghiệp vụ quan trọng",
         },
         {
-          en: "Contributed to maintaining 99%+ production uptime",
-          vi: "Góp phần duy trì uptime production trên 99%",
+          en: "Supported production stability through hands-on debugging and issue resolution",
+          vi: "Hỗ trợ ổn định production thông qua debug và xử lý sự cố trực tiếp",
+        },
+      ],
+    },
+  },
+  {
+    slug: "msig-indonesia-insurance-platform",
+    title: {
+      en: "MSIG Indonesia Insurance Platform",
+      vi: "Nền tảng Bảo hiểm MSIG Indonesia",
+    },
+    subtitle: {
+      en: "Developer · Team of 11",
+      vi: "Developer · Nhóm 11 người",
+    },
+    description: {
+      en: "A comprehensive insurance platform for MSIG Indonesia, improving policy management and customer experience through new features, change requests, workflows, and scheduled processing.",
+      vi: "Nền tảng bảo hiểm toàn diện cho MSIG Indonesia, cải thiện quản lý hợp đồng và trải nghiệm khách hàng thông qua tính năng mới, change request, workflow và xử lý định kỳ.",
+    },
+    tech: [
+      "Spring Boot",
+      "Hibernate / JPA",
+      "RESTful API",
+      "VPMS Model",
+      "Batch Jobs",
+      "Quartz",
+      "SQL Server",
+      "JasperReports",
+    ],
+    caseStudy: {
+      role: { en: "Developer", vi: "Developer" },
+      team: { en: "11 engineers", vi: "11 kỹ sư" },
+      context: {
+        en: "MSIG Indonesia needed a comprehensive insurance platform to support policy management and improve customer experience across business workflows.",
+        vi: "MSIG Indonesia cần một nền tảng bảo hiểm toàn diện để hỗ trợ quản lý hợp đồng và cải thiện trải nghiệm khách hàng trên nhiều luồng nghiệp vụ.",
+      },
+      problem: {
+        en: "The project had to continuously absorb client change requests while preserving reliability across microservices, workflows, scheduled jobs, and SQL Server-backed operations.",
+        vi: "Dự án cần liên tục tiếp nhận change request từ khách hàng nhưng vẫn giữ độ tin cậy cho microservices, workflow, batch job và các nghiệp vụ sử dụng SQL Server.",
+      },
+      solution: [
+        {
+          en: "Implemented new features and change requests with Spring Boot, Hibernate, JPA, RESTful APIs, and the VPMS model.",
+          vi: "Triển khai tính năng mới và change request bằng Spring Boot, Hibernate, JPA, RESTful API và VPMS model.",
+        },
+        {
+          en: "Debugged and resolved software defects to maintain platform reliability across policy-management workflows.",
+          vi: "Debug và xử lý lỗi phần mềm để duy trì độ tin cậy cho các workflow quản lý hợp đồng.",
+        },
+        {
+          en: "Worked with microservices, workflows, Quartz batch jobs, SQL Server, and JasperReports for operational processing and reporting.",
+          vi: "Làm việc với microservices, workflow, Quartz batch job, SQL Server và JasperReports cho xử lý vận hành và báo cáo.",
+        },
+      ],
+      results: [
+        {
+          en: "Delivered client-requested enhancements for policy-management workflows",
+          vi: "Triển khai các cải tiến theo yêu cầu khách hàng cho luồng quản lý hợp đồng",
+        },
+        {
+          en: "Maintained reliability by debugging and resolving defects during active development",
+          vi: "Duy trì độ tin cậy bằng việc debug và xử lý lỗi trong quá trình phát triển",
+        },
+        {
+          en: "Supported scheduled processing and reporting through batch jobs and JasperReports",
+          vi: "Hỗ trợ xử lý định kỳ và báo cáo thông qua batch job và JasperReports",
+        },
+      ],
+    },
+  },
+  {
+    slug: "pga-philippines-insurance-platform",
+    title: {
+      en: "PGA Philippines Insurance Platform",
+      vi: "Nền tảng Bảo hiểm PGA Philippines",
+    },
+    subtitle: {
+      en: "Developer · Team of 25",
+      vi: "Developer · Nhóm 25 người",
+    },
+    description: {
+      en: "An insurance platform for Prudential Guarantee and Assurance, Inc., a leading non-life insurance company in the Philippines, focused on feature delivery, workflow reliability, and scheduled processing.",
+      vi: "Nền tảng bảo hiểm cho Prudential Guarantee and Assurance, Inc., công ty bảo hiểm phi nhân thọ hàng đầu tại Philippines, tập trung vào triển khai tính năng, độ tin cậy workflow và xử lý định kỳ.",
+    },
+    tech: [
+      "Spring Boot",
+      "Hibernate / JPA",
+      "RESTful API",
+      "Batch Jobs",
+      "Quartz",
+      "SQL Server",
+      "JasperReports",
+    ],
+    caseStudy: {
+      role: { en: "Developer", vi: "Developer" },
+      team: { en: "25 engineers", vi: "25 kỹ sư" },
+      context: {
+        en: "PGA Philippines is tied to Prudential Guarantee and Assurance, Inc., a leading non-life insurance company in the Philippines. The platform supported ongoing insurance operations and client-driven enhancements.",
+        vi: "PGA Philippines gắn với Prudential Guarantee and Assurance, Inc., công ty bảo hiểm phi nhân thọ hàng đầu tại Philippines. Nền tảng hỗ trợ vận hành bảo hiểm và các cải tiến theo yêu cầu khách hàng.",
+      },
+      problem: {
+        en: "The platform required steady delivery of new features and change requests while keeping microservices, workflows, and scheduled batch jobs stable for business users.",
+        vi: "Nền tảng cần triển khai đều đặn tính năng mới và change request trong khi vẫn giữ ổn định microservices, workflow và batch job cho người dùng nghiệp vụ.",
+      },
+      solution: [
+        {
+          en: "Implemented new features and change requests using Spring Boot, Hibernate, JPA, RESTful APIs, SQL Server, and JasperReports.",
+          vi: "Triển khai tính năng mới và change request bằng Spring Boot, Hibernate, JPA, RESTful API, SQL Server và JasperReports.",
+        },
+        {
+          en: "Debugged and resolved software defects to keep insurance workflows reliable during active delivery.",
+          vi: "Debug và xử lý lỗi phần mềm để giữ độ tin cậy cho các workflow bảo hiểm trong quá trình phát triển.",
+        },
+        {
+          en: "Worked with microservices, workflow logic, Quartz batch scheduling, and reporting flows for daily operations.",
+          vi: "Làm việc với microservices, logic workflow, Quartz batch scheduling và luồng báo cáo cho vận hành hằng ngày.",
+        },
+      ],
+      results: [
+        {
+          en: "Delivered feature updates and change requests for a large insurance delivery team",
+          vi: "Triển khai cập nhật tính năng và change request trong một đội dự án bảo hiểm quy mô lớn",
+        },
+        {
+          en: "Helped maintain workflow reliability through defect resolution and production-oriented debugging",
+          vi: "Góp phần duy trì độ tin cậy workflow thông qua xử lý lỗi và debug theo hướng production",
+        },
+        {
+          en: "Supported scheduled insurance processing with Quartz batch jobs and reporting workflows",
+          vi: "Hỗ trợ xử lý bảo hiểm định kỳ bằng Quartz batch job và các luồng báo cáo",
         },
       ],
     },

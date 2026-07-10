@@ -9,7 +9,7 @@ export default function Projects({ lang }: { lang: Lang }) {
         {projects.map((project) => (
           <article
             key={project.slug}
-            className={`group flex flex-col rounded-2xl border border-border-soft bg-surface p-6 transition-colors hover:border-accent sm:p-8 ${
+            className={`surface-lift group flex flex-col rounded-2xl border border-border-soft bg-surface p-6 hover:border-accent sm:p-8 ${
               project.featured ? "sm:col-span-2 md:col-span-1" : ""
             }`}
           >
@@ -36,7 +36,7 @@ export default function Projects({ lang }: { lang: Lang }) {
               {project.caseStudy && (
                 <a
                   href={`/${lang}/projects/${project.slug}`}
-                  className="text-accent underline-offset-4 hover:underline"
+                  className="text-accent underline-offset-4 transition hover:-translate-y-0.5 hover:underline"
                 >
                   {t(ui.projects.caseStudy, lang)} →
                 </a>
@@ -46,7 +46,7 @@ export default function Projects({ lang }: { lang: Lang }) {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent underline-offset-4 hover:underline"
+                  className="text-accent underline-offset-4 transition hover:-translate-y-0.5 hover:underline"
                 >
                   {t(ui.projects.liveDemo, lang)} ↗
                 </a>
@@ -56,7 +56,7 @@ export default function Projects({ lang }: { lang: Lang }) {
                   href={project.repo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted underline-offset-4 transition-colors hover:text-foreground hover:underline"
+                  className="text-muted underline-offset-4 transition hover:-translate-y-0.5 hover:text-foreground hover:underline"
                 >
                   {t(ui.projects.sourceCode, lang)} ↗
                 </a>

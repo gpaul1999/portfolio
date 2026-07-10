@@ -9,7 +9,7 @@ export default function Skills({ lang }: { lang: Lang }) {
         {skillGroups.map((group) => (
           <div
             key={group.title.en}
-            className="rounded-2xl border border-border-soft bg-surface p-6"
+            className="surface-lift rounded-2xl border border-border-soft bg-surface p-6"
           >
             <h3 className="mb-4 font-serif text-lg font-medium">
               {t(group.title, lang)}
@@ -18,7 +18,7 @@ export default function Skills({ lang }: { lang: Lang }) {
               {group.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="rounded-lg border border-border-soft bg-background px-3 py-1 text-sm text-muted"
+                  className="rounded-lg border border-border-soft bg-background px-3 py-1 text-sm text-muted transition hover:border-accent/60 hover:bg-accent-soft hover:text-foreground"
                 >
                   {skill}
                 </span>

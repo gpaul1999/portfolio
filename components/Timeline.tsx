@@ -23,7 +23,7 @@ export default function Timeline({ lang }: { lang: Lang }) {
         {timeline.map((item) => (
           <article
             key={`${item.company.en}-${item.period.en}`}
-            className="relative rounded-2xl border border-border-soft bg-surface p-6 sm:p-8"
+            className="surface-lift relative rounded-2xl border border-border-soft bg-surface p-6 sm:p-8"
           >
             <TimelineIcon type={item.type} />
             <div className="flex flex-wrap items-baseline justify-between gap-2">

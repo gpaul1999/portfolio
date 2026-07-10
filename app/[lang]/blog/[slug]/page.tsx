@@ -48,7 +48,7 @@ export default async function BlogPost({
             ← {t(ui.blog.backToBlog, lang)}
           </a>
 
-          <h1 className="mt-6 font-serif text-3xl font-medium leading-tight tracking-tight sm:text-4xl">
+          <h1 className="mt-6 font-serif text-3xl font-medium leading-tight sm:text-4xl">
             {post.title}
           </h1>
           <p className="mt-4 font-mono text-xs text-muted">
