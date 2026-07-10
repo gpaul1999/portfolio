@@ -1,21 +1,24 @@
 # Portfolio
 
-A minimal, modern personal portfolio built with **Next.js 16**, **TypeScript**, and **Tailwind CSS 4** — warm, Claude-inspired color palette with light/dark mode.
+A bilingual (English/Vietnamese) personal portfolio built with **Next.js 16**, **TypeScript**, and **Tailwind CSS 4** — warm, Claude-inspired color palette with light/dark mode.
+
+Features:
+
+- **Bilingual** — every page exists at `/en/...` and `/vi/...`, with a language switcher in the header. `/` redirects based on the visitor's cookie or browser language (`proxy.ts`).
+- **Project case studies** — each project card links to `/[lang]/projects/[slug]` with context → problem → solution → results and an SVG architecture diagram (`components/diagrams.tsx`).
+- **Blog** — Markdown posts in `content/blog/en/` and `content/blog/vi/` (same filename = same post in both languages). Frontmatter: `title`, `date`, `excerpt`, `tags`.
+- **Career timeline** — work + education rendered as a vertical timeline.
 
 ## Customize your content
 
-All content lives in **one file**: [`data/site.ts`](data/site.ts).
+Almost all content lives in **two places**:
 
-Edit it to change your:
+- [`data/site.ts`](data/site.ts) — name, role, tagline, socials, skills, projects (with case studies), timeline, certifications, awards. Every text field is bilingual: `{ en: "...", vi: "..." }`.
+- [`content/blog/`](content/blog/) — blog posts as Markdown files.
 
-- Name, role, tagline, location, email
-- Social links (GitHub, LinkedIn, X)
-- About paragraphs
-- Skill groups
-- Projects (title, description, tech, demo/repo links)
-- Work experience
+UI labels (buttons, section titles) are in [`lib/i18n.ts`](lib/i18n.ts).
 
-No component changes needed. To add a resume, drop `resume.pdf` into `public/` and set `resumeUrl: "/resume.pdf"` in `data/site.ts`.
+To update the resume, replace `public/resume.pdf` (or clear `resumeUrl` in `data/site.ts` to hide the button).
 
 ## Development
 
