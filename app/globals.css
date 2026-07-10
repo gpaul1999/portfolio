@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Claude-inspired warm palette */
+:root {
+  --background: #faf9f5;
+  --surface: #f0eee6;
+  --surface-2: #e8e5da;
+  --border-soft: #dcd9cd;
+  --foreground: #141413;
+  --muted: #6e6b5e;
+  --accent: #d97757;
+  --accent-strong: #c05f3c;
+  --accent-soft: #f3e0d8;
+}
+
+.dark {
+  --background: #262624;
+  --surface: #30302e;
+  --surface-2: #3a3a37;
+  --border-soft: #45443f;
+  --foreground: #f5f4ef;
+  --muted: #b3b0a4;
+  --accent: #d97757;
+  --accent-strong: #e08b6d;
+  --accent-soft: #453530;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border-soft: var(--border-soft);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --font-sans: var(--font-geist-sans);
+  --font-serif: var(--font-display-serif);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: #faf9f5;
+}
