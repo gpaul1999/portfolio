@@ -13,6 +13,11 @@ export default function Projects() {
             }`}
           >
             <h3 className="font-serif text-xl font-medium">{project.title}</h3>
+            {project.subtitle && (
+              <p className="mt-1 text-xs font-medium text-accent-strong">
+                {project.subtitle}
+              </p>
+            )}
             <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
               {project.description}
             </p>

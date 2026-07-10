@@ -19,6 +19,19 @@ export default function Experience() {
             <p className="mt-3 text-sm leading-relaxed text-muted">
               {job.description}
             </p>
+            {job.highlights && (
+              <ul className="mt-3 flex flex-col gap-1.5">
+                {job.highlights.map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-2 text-sm leading-relaxed text-muted"
+                  >
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
             {job.tech && (
               <div className="mt-4 flex flex-wrap gap-2">
                 {job.tech.map((t) => (

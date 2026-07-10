@@ -6,28 +6,28 @@
 
 export const site = {
   name: "Vo Tan Nguyen",
-  role: "Software Developer",
+  role: "Java Software Engineer",
   tagline:
-    "I build clean, reliable web applications with a focus on user experience and maintainable code.",
+    "Backend engineer with 4+ years of experience building scalable microservices for banking and enterprise systems — designing transactional workflows, event-driven services, and resilient backends built for high concurrency.",
   location: "Ho Chi Minh City, Vietnam",
   email: "votannguyen1599@gmail.com",
   // Used for <title> and social previews
-  metaTitle: "Vo Tan Nguyen — Software Developer",
+  metaTitle: "Vo Tan Nguyen — Java Software Engineer",
   metaDescription:
-    "Portfolio of Vo Tan Nguyen, a software developer building modern web applications.",
-  resumeUrl: "", // e.g. "/resume.pdf" — drop the file into /public and set the path here
+    "Portfolio of Vo Tan Nguyen, a Java software engineer building scalable microservices for banking and enterprise systems.",
+  resumeUrl: "/resume.pdf",
   socials: {
     github: "https://github.com/gpaul1999",
     linkedin: "", // e.g. "https://www.linkedin.com/in/your-handle"
-    x: "", // e.g. "https://x.com/your-handle"
+    x: "",
   },
 };
 
 export const about = {
   paragraphs: [
-    "I'm a software developer who enjoys turning ideas into products. My main focus is building web applications that are fast, accessible, and pleasant to use.",
-    "I care about clean architecture and readable code, and I'm always learning — whether it's a new framework, a better testing strategy, or a deeper understanding of the platforms I build on.",
-    "Outside of coding, I enjoy exploring new technologies, contributing to side projects, and sharing what I learn with others.",
+    "I'm a backend engineer specializing in Core Banking workflows, event-driven communication, and distributed backend services using Quarkus, Spring Boot, Apache Camel, Kafka, and Redis.",
+    "I have hands-on experience designing transactional workflows, centralized error handling, dynamic route configuration, and secure message processing for systems that handle millions of requests per day.",
+    "I'm passionate about building maintainable, resilient backend systems optimized for high concurrency and real-time processing, and I enjoy working in Agile environments where I can keep learning and improving.",
   ],
 };
 
@@ -39,24 +39,56 @@ export type SkillGroup = {
 export const skillGroups: SkillGroup[] = [
   {
     title: "Languages",
-    skills: ["TypeScript", "JavaScript", "Python", "SQL", "HTML", "CSS"],
+    skills: ["Java (8+)", "JavaScript", "SQL", "HTML", "CSS", "XML"],
   },
   {
-    title: "Frontend",
-    skills: ["React", "Next.js", "Tailwind CSS", "Responsive Design"],
+    title: "Frameworks & Libraries",
+    skills: [
+      "Spring Boot",
+      "Spring MVC",
+      "Spring Security",
+      "Quarkus",
+      "Apache Camel",
+      "Kafka",
+      "Redis",
+      "Hibernate / JPA",
+      "Jmix",
+      "JasperReports",
+      "Maven",
+    ],
   },
   {
-    title: "Backend",
-    skills: ["Node.js", "Express", "REST APIs", "PostgreSQL", "MongoDB"],
+    title: "Databases",
+    skills: [
+      "SQL Server",
+      "PostgreSQL",
+      "Oracle",
+      "Schema design",
+      "Indexing",
+      "Query optimization",
+      "Stored procedures",
+    ],
   },
   {
-    title: "Tools",
-    skills: ["Git", "GitHub", "Docker", "Linux", "VS Code"],
+    title: "Tools & Practices",
+    skills: [
+      "Docker",
+      "Git",
+      "Jira",
+      "Prometheus",
+      "Grafana",
+      "Postman",
+      "SonarLint",
+      "Agile",
+      "CI/CD",
+      "RESTful APIs",
+    ],
   },
 ];
 
 export type Project = {
   title: string;
+  subtitle?: string;
   description: string;
   tech: string[];
   link?: string; // live demo URL
@@ -66,29 +98,49 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "Personal Portfolio",
+    title: "Core Banking Microservice Platform",
+    subtitle: "Lead Developer · Team of 3",
     description:
-      "This very site — a minimal, fast portfolio built with Next.js and Tailwind CSS, with dark mode and a single-file content config.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-    repo: "https://github.com/gpaul1999/portfolio",
+      "Payment system for a domestic credit card issuing program. Designed key components of a modular microservice platform handling millions of transactional requests per day — dynamic Camel route configuration via YAML (~60% less integration change effort), a standardized processing framework with centralized exception handling (~70% less duplicated logic), Redis caching and async messaging (30%+ faster responses under peak load), and a secure Author-then-MAC transaction pipeline for sensitive payment data.",
+    tech: [
+      "Quarkus",
+      "Apache Camel",
+      "Redis",
+      "Oracle",
+      "JPA / Hibernate",
+      "JasperReports",
+    ],
     featured: true,
   },
   {
-    title: "Project Two",
+    title: "Vikki Bank Core Banking",
+    subtitle: "Backend Developer · 50+ backend engineers, 150+ program",
     description:
-      "Replace this with a real project: what it does, the problem it solves, and what you learned building it. Two sentences is plenty.",
-    tech: ["React", "Node.js", "PostgreSQL"],
-    link: "",
-    repo: "",
+      "Enterprise Core Banking system supporting customer onboarding, account lifecycle management, and transaction processing. Built core banking modules for high-volume account and transaction processing, Kafka-based event-driven communication between services, Redis caching for high-concurrency scenarios, and RESTful APIs optimized for ACID-compliant transactional consistency.",
+    tech: [
+      "Jmix",
+      "Spring Boot",
+      "Apache Kafka",
+      "Redis",
+      "PostgreSQL",
+      "Docker",
+    ],
     featured: true,
   },
   {
-    title: "Project Three",
+    title: "Insurance Enterprise Platforms",
+    subtitle: "Developer / Lead Developer · GGI Tokio Marine, MSIG Indonesia, PGA Philippines",
     description:
-      "Another placeholder project. Keep descriptions outcome-focused — what the project achieves, not just the tech it uses.",
-    tech: ["Python", "FastAPI"],
-    link: "",
-    repo: "",
+      "Large-scale insurance systems for policy management, claims processing, and internal operational workflows, supporting large daily volumes of policy and claims transactions across three international clients.",
+    tech: [
+      "Spring Boot",
+      "Spring MVC",
+      "Hibernate / JPA",
+      "Batch Jobs",
+      "Quartz",
+      "SQL Server",
+      "JasperReports",
+    ],
   },
 ];
 
@@ -97,24 +149,62 @@ export type Experience = {
   role: string;
   period: string;
   description: string;
+  highlights?: string[];
   tech?: string[];
 };
 
 export const experience: Experience[] = [
   {
-    company: "Company Name",
-    role: "Software Developer",
-    period: "2023 — Present",
+    company: "BC Card Viet Nam",
+    role: "Java Software Engineer",
+    period: "Mar 2025 — Present",
     description:
-      "Replace with your real experience: what you built, the impact it had, and the scale you worked at.",
-    tech: ["TypeScript", "React", "Node.js"],
+      "Designing and developing a microservices-based Core Banking system handling millions of requests per day across internal banking services.",
+    highlights: [
+      "Built dynamic Camel integration flows using YAML + Java DSL, reducing manual integration effort by ~60%",
+      "Standardized processor architecture, eliminating duplicated business logic and reducing error-handling code by ~70%",
+      "Implemented Redis caching layer, improving API response time by 30%+ under high-load scenarios",
+      "Leveraged Redis Pub/Sub and Streams for asynchronous communication across distributed services",
+      "Applied Author-then-MAC security mechanism to ensure integrity and authenticity of transactional messages",
+      "Implemented scheduled jobs and automated reporting workflows for operational processes",
+    ],
+    tech: ["Quarkus", "Apache Camel", "Redis", "Oracle", "JasperReports"],
   },
   {
-    company: "Previous Company",
-    role: "Junior Developer",
-    period: "2021 — 2023",
+    company: "DXC Technology Service Vietnam",
+    role: "Analyst Software Engineering",
+    period: "Jan 2022 — Mar 2025",
     description:
-      "Earlier role. Focus on growth and concrete contributions — features shipped, bugs squashed, processes improved.",
-    tech: ["JavaScript", "Express"],
+      "Developed and maintained enterprise insurance platforms supporting large-scale daily policy and claims transactions.",
+    highlights: [
+      "Improved backend performance by 20% through query tuning, indexing strategies, and transaction optimization",
+      "Reduced batch job execution time by 25%, improving operational efficiency",
+      "Contributed to maintaining 99%+ system uptime in production environments",
+    ],
+    tech: ["Spring Boot", "Hibernate", "SQL Server", "Batch Jobs", "Quartz"],
   },
+];
+
+export type EducationItem = {
+  school: string;
+  degree: string;
+  period: string;
+};
+
+export const education: EducationItem[] = [
+  {
+    school: "Industrial University of Ho Chi Minh City",
+    degree: "Software Engineering",
+    period: "2017 — 2022",
+  },
+];
+
+export const certifications: string[] = [
+  "Agile Software Development: Scrum for Developers (2024)",
+  "TOEIC 635 (2024)",
+];
+
+export const awards: string[] = [
+  "Star Award — DXC Technology, Q4 2024",
+  "Best Team Award — DXC Technology, Q1 2024",
 ];
