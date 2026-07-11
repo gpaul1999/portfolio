@@ -1,0 +1,16 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <filter id="shadow" x="0" y="0" width="64" height="64" color-interpolation-filters="sRGB">
+    <feDropShadow dx="0" dy="4" stdDeviation="2" flood-color="#141413" flood-opacity=".18"/>
+  </filter>
+  <g filter="url(#shadow)" shape-rendering="crispEdges">
+    <path fill="#F7F2E7" d="M4 48h4v4H4zM8 44h4v4H8zM12 40h4v4h-4z"/>
+    <path fill="#141413" d="M28 8h24v4H28zM28 12h28v4H28zM28 16h28v4H28zM28 20h28v4H28zM28 24h20v4H28z"/>
+    <path fill="#141413" d="M24 28h28v4H24zM20 32h28v4H20zM16 36h28v4H16zM12 40h28v4H12zM12 44h20v4H12z"/>
+    <path fill="#141413" d="M8 36h12v4H8zM4 32h12v4H4zM0 28h12v4H0z"/>
+    <path fill="#141413" d="M32 32h8v4h-8zM36 36h4v4h-4z"/>
+    <path fill="#141413" d="M24 48h8v4h-8zM28 52h8v4h-8zM40 44h4v8h-4zM44 52h8v4h-8z"/>
+    <path fill="#141413" d="M48 24h8v4h-8z"/>
+    <path fill="#F7F2E7" d="M44 12h4v4h-4zM48 28h8v4h-8zM32 44h8v4h-8z"/>
+    <path fill="#D97757" d="M28 36h4v4h-4z"/>
+  </g>
+</svg>
