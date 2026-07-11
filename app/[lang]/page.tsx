@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
+import ProductShowcase from "@/components/ProductShowcase";
 import Projects from "@/components/Projects";
 import Timeline from "@/components/Timeline";
 import Education from "@/components/Education";
@@ -26,6 +27,7 @@ export default async function Home({
         <Hero lang={lang} />
         <About lang={lang} />
         <Skills lang={lang} />
+        <ProductShowcase lang={lang} />
         <Projects lang={lang} />
         <Timeline lang={lang} />
         <Education lang={lang} />

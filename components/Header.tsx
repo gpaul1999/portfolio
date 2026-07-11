@@ -6,6 +6,7 @@ export default function Header({ lang }: { lang: Lang }) {
   const links = [
     { href: `/${lang}#about`, label: t(ui.nav.about, lang) },
     { href: `/${lang}#skills`, label: t(ui.nav.skills, lang) },
+    { href: `/${lang}#products`, label: t(ui.nav.products, lang) },
     { href: `/${lang}#projects`, label: t(ui.nav.projects, lang) },
     { href: `/${lang}#experience`, label: t(ui.nav.experience, lang) },
     { href: `/${lang}/blog`, label: t(ui.nav.blog, lang) },

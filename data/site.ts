@@ -103,6 +103,124 @@ export const skillGroups: SkillGroup[] = [
   },
 ];
 
+export type ProductStatus = "live" | "beta" | "building";
+
+export type Product = {
+  slug: string;
+  name: string;
+  tagline: L;
+  description: L;
+  status: ProductStatus;
+  url: string;
+  image?: string; // path under /public
+  tech: string[];
+  role: L;
+  intro: L; // opening paragraph on the detail page
+  features: Array<{ title: L; description: L }>;
+  operations: L[]; // how the product is built and run
+};
+
+export const products: Product[] = [
+  {
+    slug: "contgo",
+    name: "ContGo",
+    tagline: {
+      en: "Fleet management for Vietnamese container trucking companies — trips, costs, fuel, and per-trip profit in one screen.",
+      vi: "Quản lý đội xe container cho nhà xe Việt — chuyến, chi phí, nhiên liệu và lãi/lỗ từng chuyến gọn trong một màn hình.",
+    },
+    description: {
+      en: "A SaaS platform that replaces Excel sheets and paper notebooks for fleet owners running 5–30 container trucks. Dispatchers manage trips and approvals on the web; drivers snap receipts and log fuel right inside a Zalo Mini App — no app install needed.",
+      vi: "Nền tảng SaaS thay thế Excel và sổ tay cho chủ nhà xe vận hành 5–30 đầu container. Điều hành quản lý chuyến và duyệt chi trên web; tài xế chụp hóa đơn, ghi nhiên liệu ngay trong Zalo Mini App — không cần cài app.",
+    },
+    status: "live",
+    url: "https://contgo.pages.dev/",
+    image: "/products/contgo.png",
+    tech: [
+      "Spring Boot 3",
+      "PostgreSQL",
+      "Flyway",
+      "JWT",
+      "React 18",
+      "Vite",
+      "Tailwind CSS",
+      "Zalo Mini App",
+      "Docker",
+      "Cloudflare Pages",
+      "Railway",
+    ],
+    role: {
+      en: "Founder · solo design, build & operations",
+      vi: "Sáng lập · một mình thiết kế, xây dựng & vận hành",
+    },
+    intro: {
+      en: "Fleet owners running container trucks usually track everything across Excel, paper notebooks, and phone calls: fuel in one place, tolls in a driver's memory, advances on paper. The question they can't answer is the one that matters — which trips actually make money. ContGo turns every trip into one number: revenue − costs − advances = profit or loss.",
+      vi: "Chủ nhà xe container thường quản lý mọi thứ bằng Excel, sổ tay và những cuộc điện thoại: dầu ghi một nơi, cầu đường tài xế nhớ, tạm ứng ghi giấy. Câu hỏi họ không trả lời được lại là câu quan trọng nhất — chuyến nào thực sự có lời. ContGo biến mỗi chuyến xe thành một con số: doanh thu − chi phí − tạm ứng = lãi/lỗ.",
+    },
+    features: [
+      {
+        title: { en: "Trip orders", vi: "Lệnh xe" },
+        description: {
+          en: "Create trips, assign drivers, and track status in real time.",
+          vi: "Tạo chuyến, giao tài xế, theo dõi trạng thái real-time.",
+        },
+      },
+      {
+        title: { en: "Expenses & advances", vi: "Chi phí & tạm ứng" },
+        description: {
+          en: "Drivers snap receipt photos on Zalo; dispatchers approve in one tap.",
+          vi: "Tài xế chụp hóa đơn gửi ngay trên Zalo, điều hành duyệt 1 chạm.",
+        },
+      },
+      {
+        title: { en: "Fuel log", vi: "Nhật ký nhiên liệu" },
+        description: {
+          en: "Liters, cost, and station — price per liter computed automatically.",
+          vi: "Ghi lít, số tiền, trạm xăng — tính đơn giá/lít tự động.",
+        },
+      },
+      {
+        title: { en: "Per-trip settlement", vi: "Quyết toán từng chuyến" },
+        description: {
+          en: "Revenue − costs − advances = profit or loss, clear for every trip.",
+          vi: "Doanh thu − chi phí − tạm ứng = lãi/lỗ, rõ ràng cho từng chuyến.",
+        },
+      },
+      {
+        title: { en: "Expiry alerts", vi: "Cảnh báo hết hạn" },
+        description: {
+          en: "Inspection, insurance, and driver licenses flagged 15 days ahead.",
+          vi: "Đăng kiểm, bảo hiểm, bằng lái được nhắc trước 15 ngày.",
+        },
+      },
+      {
+        title: { en: "Reports & Excel export", vi: "Báo cáo & xuất Excel" },
+        description: {
+          en: "Revenue, driver performance, and fuel consumption reports.",
+          vi: "Báo cáo doanh thu, hiệu suất tài xế, tiêu hao nhiên liệu.",
+        },
+      },
+    ],
+    operations: [
+      {
+        en: "Spring Boot 3 API with JWT security and PostgreSQL, schema-managed with Flyway migrations, deployed on Railway.",
+        vi: "API Spring Boot 3 với bảo mật JWT và PostgreSQL, quản lý schema bằng Flyway migration, triển khai trên Railway.",
+      },
+      {
+        en: "React 18 + Vite + Tailwind frontend served as a static site on Cloudflare Pages.",
+        vi: "Frontend React 18 + Vite + Tailwind chạy dạng static site trên Cloudflare Pages.",
+      },
+      {
+        en: "Driver app built as a Zalo Mini App, so drivers use it inside Zalo with zero installation.",
+        vi: "Ứng dụng cho tài xế xây dựng dạng Zalo Mini App — tài xế dùng ngay trong Zalo, không cần cài đặt.",
+      },
+      {
+        en: "Dockerized local development with docker-compose mirroring the production topology.",
+        vi: "Môi trường phát triển đóng gói Docker với docker-compose mô phỏng đúng cấu trúc production.",
+      },
+    ],
+  },
+];
+
 export type CaseStudy = {
   context: L;
   problem: L;

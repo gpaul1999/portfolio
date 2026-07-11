@@ -14,6 +14,7 @@ export const ui = {
   nav: {
     about: { en: "About", vi: "Giới thiệu" },
     skills: { en: "Skills", vi: "Kỹ năng" },
+    products: { en: "Products", vi: "Sản phẩm" },
     projects: { en: "Projects", vi: "Dự án" },
     experience: { en: "Experience", vi: "Kinh nghiệm" },
     education: { en: "Education", vi: "Học vấn" },
@@ -33,6 +34,7 @@ export const ui = {
   sections: {
     about: { en: "About", vi: "Giới thiệu" },
     skills: { en: "Skills", vi: "Kỹ năng" },
+    products: { en: "Products", vi: "Sản phẩm" },
     projects: { en: "Projects", vi: "Dự án" },
     experience: { en: "Experience", vi: "Kinh nghiệm" },
     education: { en: "Education & Awards", vi: "Học vấn & Giải thưởng" },
@@ -56,6 +58,23 @@ export const ui = {
     techStack: { en: "Tech stack", vi: "Công nghệ sử dụng" },
     role: { en: "Role", vi: "Vai trò" },
     team: { en: "Team", vi: "Quy mô" },
+  },
+  products: {
+    intro: {
+      en: "Things I design, build, and operate myself — live and serving real users.",
+      vi: "Những sản phẩm tôi tự thiết kế, xây dựng và vận hành — đang chạy và phục vụ người dùng thật.",
+    },
+    visit: { en: "Visit website", vi: "Truy cập website" },
+    learnMore: { en: "Learn more", vi: "Tìm hiểu thêm" },
+    statusLive: { en: "Live", vi: "Đang vận hành" },
+    statusBeta: { en: "Beta", vi: "Bản beta" },
+    statusBuilding: { en: "In development", vi: "Đang phát triển" },
+    features: { en: "Key features", vi: "Tính năng chính" },
+    operations: { en: "How I build & run it", vi: "Cách tôi xây dựng & vận hành" },
+    techStack: { en: "Tech stack", vi: "Công nghệ sử dụng" },
+    role: { en: "Role", vi: "Vai trò" },
+    status: { en: "Status", vi: "Trạng thái" },
+    backToHome: { en: "Back to products", vi: "Về mục sản phẩm" },
   },
   education: {
     education: { en: "Education", vi: "Học vấn" },
