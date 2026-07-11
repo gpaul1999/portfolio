@@ -19,6 +19,10 @@
   --signal-soft: #dbe9e5;
   --shadow-soft: 0 16px 40px rgba(52, 45, 35, 0.1);
   --shadow-header: 0 10px 30px rgba(52, 45, 35, 0.08);
+  --cursor-spot-x: 50vw;
+  --cursor-spot-y: 35vh;
+  --cursor-bg-x: 0px;
+  --cursor-bg-y: 0px;
 }
 
 .dark {
@@ -66,6 +70,8 @@ html {
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--signal-soft) 22%, transparent), transparent 28rem),
     radial-gradient(circle at 50% -18rem, color-mix(in srgb, var(--accent-soft) 74%, transparent), transparent 35rem),
@@ -73,6 +79,11 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
   overflow-x: clip;
+}
+
+body > :not(.cursor-reactive-bg):not(.custom-cursor) {
+  position: relative;
+  z-index: 1;
 }
 
 ::selection {
@@ -197,13 +208,58 @@ body {
   transform: translateX(105%);
 }
 
-.lego-cursor {
+.cursor-reactive-bg {
+  position: fixed;
+  inset: -8vmax;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at calc(var(--cursor-spot-x) + var(--cursor-bg-x)) calc(var(--cursor-spot-y) + var(--cursor-bg-y)),
+      color-mix(in srgb, var(--signal-soft) 58%, transparent),
+      transparent 18rem
+    ),
+    radial-gradient(
+      circle at calc(100% - var(--cursor-spot-x)) calc(100% - var(--cursor-spot-y)),
+      color-mix(in srgb, var(--accent-soft) 48%, transparent),
+      transparent 22rem
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 34px,
+      color-mix(in srgb, var(--foreground) 5%, transparent) 34px 35px
+    );
+  opacity: 0.95;
+  transform: translate3d(calc(var(--cursor-bg-x) * -1.4), calc(var(--cursor-bg-y) * -1.2), 0);
+  transition:
+    opacity 180ms ease,
+    transform 80ms linear;
+}
+
+.cursor-reactive-bg::before {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12vh;
+  height: 56px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--muted) 16%, transparent) 0 20px,
+      transparent 20px 42px
+    );
+  clip-path: polygon(0 72%, 100% 72%, 100% 76%, 0 76%);
+  content: "";
+  transform: translateX(calc(var(--cursor-bg-x) * -2));
+}
+
+.custom-cursor {
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 9999;
-  width: 38px;
-  height: 38px;
+  z-index: 2147483647;
+  width: 56px;
+  height: 56px;
   opacity: 0;
   pointer-events: none;
   transform-origin: 8px 8px;
@@ -211,18 +267,48 @@ body {
   will-change: transform;
 }
 
-.lego-cursor img {
+.custom-cursor img {
   display: block;
-  transform: translate(-8px, -8px) rotate(-8deg) scale(1);
   transition: transform 140ms ease;
 }
 
-.lego-cursor-visible {
+.custom-cursor-paw {
+  width: 76px;
+  height: 76px;
+}
+
+.custom-cursor-paw img {
+  transform: translate(-13px, -13px) scale(1);
+}
+
+.custom-cursor-neko {
+  width: 92px;
+  height: 92px;
+}
+
+.custom-cursor-neko img {
+  transform: translate(-16px, -16px) scale(1);
+}
+
+.custom-cursor-dino img {
+  image-rendering: pixelated;
+  transform: translate(-10px, -10px) scale(1);
+}
+
+.custom-cursor-visible {
   opacity: 1;
 }
 
-.lego-cursor-hover img {
-  transform: translate(-8px, -8px) rotate(0deg) scale(1.12);
+.custom-cursor-paw.custom-cursor-hover img {
+  transform: translate(-13px, -13px) translateY(-2px) scale(1.05);
+}
+
+.custom-cursor-neko.custom-cursor-hover img {
+  transform: translate(-16px, -16px) translateY(-3px) scale(1.04);
+}
+
+.custom-cursor-dino.custom-cursor-hover img {
+  transform: translate(-10px, -10px) translateY(-3px) scale(1.08);
 }
 
 @media (pointer: fine) {
@@ -231,14 +317,14 @@ body {
     cursor: none !important;
   }
 
-  .custom-cursor-active nextjs-portal,
-  .custom-cursor-active nextjs-portal * {
-    cursor: auto !important;
+  .custom-cursor-active nextjs-portal {
+    cursor: none !important;
   }
 }
 
 @media (max-width: 767px) {
-  .lego-cursor {
+  .custom-cursor,
+  .cursor-reactive-bg {
     display: none;
   }
 
@@ -256,6 +342,10 @@ body {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .cursor-reactive-bg {
+    display: none;
   }
 }
 

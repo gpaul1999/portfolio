@@ -5,6 +5,18 @@ import { useEffect } from "react";
 const STYLE_ID = "portfolio-next-devtools-polish";
 const ENHANCED_ATTR = "data-portfolio-select-enhanced";
 const SELECT_OPEN_ATTR = "data-portfolio-select-open";
+const CURSOR_PICKER_ATTR = "data-portfolio-cursor-picker";
+const CURSOR_STORAGE_KEY = "portfolio-cursor-mode";
+const CURSOR_CHANGE_EVENT = "portfolio-cursor-mode-change";
+
+type CursorMode = "native" | "paw" | "neko" | "dino";
+
+const cursorModeOptions = [
+  { value: "native", label: "Native" },
+  { value: "paw", label: "Paw", previewSrc: "/paw-cursor.png" },
+  { value: "neko", label: "Neko", previewSrc: "/neko-cursor.png" },
+  { value: "dino", label: "Dino", previewSrc: "/dino-cursor.svg" },
+] satisfies Array<{ value: CursorMode; label: string; previewSrc?: string }>;
 
 const devtoolsCss = `
   :host {
@@ -17,6 +29,11 @@ const devtoolsCss = `
     --portfolio-accent: #d97757;
     --portfolio-accent-soft: #f3e0d8;
     --portfolio-shadow: 0 18px 44px rgba(52, 45, 35, 0.16);
+  }
+
+  :host([data-portfolio-custom-cursor="true"]),
+  :host([data-portfolio-custom-cursor="true"]) * {
+    cursor: none !important;
   }
 
   #nextjs-dev-tools-menu,
@@ -269,7 +286,155 @@ const devtoolsCss = `
     color: var(--portfolio-accent);
     content: "✓";
   }
+  .portfolio-cursor-picker {
+    display: grid;
+    gap: 8px;
+    padding: 12px 0 !important;
+  }
+
+  .portfolio-cursor-picker-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .portfolio-cursor-picker-title {
+    color: var(--portfolio-text);
+    font: inherit;
+    font-weight: 700;
+  }
+
+  .portfolio-cursor-picker-value {
+    color: var(--portfolio-accent);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .portfolio-cursor-picker-options {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .portfolio-cursor-option {
+    display: grid;
+    min-width: 0;
+    min-height: 54px;
+    place-items: center;
+    gap: 3px;
+    padding: 7px 6px;
+    border: 1px solid var(--portfolio-border);
+    border-radius: 12px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.64), rgba(240, 238, 230, 0.74)),
+      var(--portfolio-surface);
+    color: var(--portfolio-muted);
+    font: inherit;
+    text-align: center;
+    transition:
+      border-color 140ms ease,
+      background 140ms ease,
+      color 140ms ease,
+      transform 140ms ease;
+  }
+
+  .portfolio-cursor-option:hover,
+  .portfolio-cursor-option[aria-pressed="true"] {
+    border-color: color-mix(in srgb, var(--portfolio-accent) 72%, var(--portfolio-border));
+    background: var(--portfolio-accent-soft);
+    color: var(--portfolio-text);
+    transform: translateY(-1px);
+  }
+
+  .portfolio-cursor-option-icon {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    color: var(--portfolio-accent);
+    font-size: 17px;
+    line-height: 1;
+  }
+
+  .portfolio-cursor-option-icon img {
+    display: block;
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+  }
+
+  .portfolio-cursor-native-icon {
+    position: relative;
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+
+  .portfolio-cursor-native-icon::before {
+    position: absolute;
+    left: 4px;
+    top: 2px;
+    width: 0;
+    height: 0;
+    border-top: 18px solid #141413;
+    border-right: 11px solid transparent;
+    content: "";
+    filter: drop-shadow(0 2px 1px rgba(20, 20, 19, 0.16));
+  }
+
+  .portfolio-cursor-native-icon::after {
+    position: absolute;
+    left: 9px;
+    top: 14px;
+    width: 4px;
+    height: 9px;
+    transform: rotate(-24deg);
+    border-radius: 2px;
+    background: #141413;
+    content: "";
+  }
+
+  .portfolio-cursor-option-label {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 11px;
+    font-weight: 700;
+  }
 `;
+
+function getSavedCursorMode(): CursorMode {
+  try {
+    const saved = window.localStorage.getItem(CURSOR_STORAGE_KEY);
+    return cursorModeOptions.some((mode) => mode.value === saved) ? (saved as CursorMode) : "paw";
+  } catch {
+    return "paw";
+  }
+}
+
+function setSavedCursorMode(mode: CursorMode) {
+  try {
+    window.localStorage.setItem(CURSOR_STORAGE_KEY, mode);
+  } catch {
+    // Ignore storage failures; the current session still receives the event.
+  }
+  window.dispatchEvent(new CustomEvent(CURSOR_CHANGE_EVENT, { detail: { mode } }));
+}
+
+function syncDevtoolsCursorHost(root: ShadowRoot) {
+  const portal = root.host as HTMLElement;
+  const canUseCustomCursor =
+    window.matchMedia("(pointer: fine)").matches &&
+    window.matchMedia("(min-width: 768px)").matches;
+
+  if (getSavedCursorMode() === "native" || !canUseCustomCursor) {
+    portal.removeAttribute("data-portfolio-custom-cursor");
+  } else {
+    portal.setAttribute("data-portfolio-custom-cursor", "true");
+  }
+}
 
 function closeAllSelects(root: ShadowRoot, except?: HTMLElement) {
   root.querySelectorAll<HTMLElement>(`.select-button[${SELECT_OPEN_ATTR}="true"]`).forEach((host) => {
@@ -374,6 +539,118 @@ function enhanceSelectButtons(root: ShadowRoot) {
   });
 }
 
+function syncCursorPickers(root: ShadowRoot) {
+  const selectedMode = getSavedCursorMode();
+
+  root.querySelectorAll<HTMLElement>(`[${CURSOR_PICKER_ATTR}="true"]`).forEach((picker) => {
+    const selectedLabel =
+      cursorModeOptions.find((mode) => mode.value === selectedMode)?.label || "Paw";
+    const value = picker.querySelector<HTMLElement>(".portfolio-cursor-picker-value");
+    if (value) value.textContent = selectedLabel;
+
+    picker.querySelectorAll<HTMLButtonElement>(".portfolio-cursor-option").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.cursorMode === selectedMode));
+    });
+  });
+}
+
+function isPreferencesPanel(panel: HTMLElement) {
+  const text = panel.textContent || "";
+  return (
+    text.includes("Preferences") &&
+    (text.includes("Theme") ||
+      text.includes("Position") ||
+      Boolean(panel.querySelector(".preference-section")))
+  );
+}
+
+function enhanceCursorPicker(root: ShadowRoot) {
+  syncDevtoolsCursorHost(root);
+
+  root.querySelectorAll<HTMLElement>(`[${CURSOR_PICKER_ATTR}="true"]`).forEach((picker) => {
+    const panel = picker.closest<HTMLElement>(".panel-content-container");
+    if (!panel || !isPreferencesPanel(panel)) picker.remove();
+  });
+
+  root
+    .querySelectorAll<HTMLElement>(".panel-content-container")
+    .forEach((panel) => {
+      if (!isPreferencesPanel(panel)) return;
+      if (panel.querySelector(`[${CURSOR_PICKER_ATTR}="true"]`)) return;
+
+      const picker = document.createElement("section");
+      picker.className = "portfolio-cursor-picker preference-section";
+      picker.setAttribute(CURSOR_PICKER_ATTR, "true");
+
+      const header = document.createElement("div");
+      header.className = "portfolio-cursor-picker-header";
+
+      const title = document.createElement("div");
+      title.className = "portfolio-cursor-picker-title";
+      title.textContent = "Cursor";
+
+      const value = document.createElement("div");
+      value.className = "portfolio-cursor-picker-value";
+
+      const options = document.createElement("div");
+      options.className = "portfolio-cursor-picker-options";
+
+      cursorModeOptions.forEach((mode) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "portfolio-cursor-option";
+        button.dataset.cursorMode = mode.value;
+        button.setAttribute("aria-label", `Use ${mode.label} cursor`);
+
+        const icon = document.createElement("span");
+        icon.className = "portfolio-cursor-option-icon";
+        icon.setAttribute("aria-hidden", "true");
+
+        if (mode.previewSrc) {
+          const image = document.createElement("img");
+          image.src = mode.previewSrc;
+          image.alt = "";
+          image.loading = "lazy";
+          icon.append(image);
+        } else {
+          const nativeIcon = document.createElement("span");
+          nativeIcon.className = "portfolio-cursor-native-icon";
+          icon.append(nativeIcon);
+        }
+
+        const label = document.createElement("span");
+        label.className = "portfolio-cursor-option-label";
+        label.textContent = mode.label;
+
+        button.append(icon, label);
+        button.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          setSavedCursorMode(mode.value);
+          syncDevtoolsCursorHost(root);
+          syncCursorPickers(root);
+        });
+
+        options.append(button);
+      });
+
+      header.append(title, value);
+      picker.append(header, options);
+
+      const firstPreferenceSection = panel.querySelector<HTMLElement>(
+        `.preference-section:not([${CURSOR_PICKER_ATTR}="true"])`,
+      );
+
+      if (firstPreferenceSection) {
+        firstPreferenceSection.insertAdjacentElement("afterend", picker);
+      } else {
+        panel.append(picker);
+      }
+    });
+
+  syncCursorPickers(root);
+}
+
 function installPolish() {
   const portal = document.querySelector("nextjs-portal");
   const root = portal?.shadowRoot;
@@ -387,6 +664,7 @@ function installPolish() {
   }
 
   enhanceSelectButtons(root);
+  enhanceCursorPicker(root);
 }
 
 export default function NextDevtoolsPolish() {
@@ -416,12 +694,20 @@ export default function NextDevtoolsPolish() {
       if (!isInsideEnhancedSelect) closeAllSelects(root);
     }
 
+    function onCursorModeChange() {
+      installPolish();
+    }
+
     document.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener(CURSOR_CHANGE_EVENT, onCursorModeChange);
+    window.addEventListener("storage", onCursorModeChange);
 
     return () => {
       observer.disconnect();
       window.clearInterval(interval);
       document.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener(CURSOR_CHANGE_EVENT, onCursorModeChange);
+      window.removeEventListener("storage", onCursorModeChange);
     };
   }, []);
 
