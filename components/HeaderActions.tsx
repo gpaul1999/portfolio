@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { Lang } from "@/lib/i18n";
+import CursorPicker from "./CursorPicker";
 import LanguageToggle from "./LanguageToggle";
 import ThemeToggle from "./ThemeToggle";
 
@@ -48,6 +49,7 @@ export default function HeaderActions({
       </nav>
 
       <LanguageToggle lang={lang} />
+      <CursorPicker />
       <ThemeToggle />
 
       <button

@@ -55,7 +55,7 @@ export default async function RootLayout({
       </head>
       <body className="min-h-full flex flex-col">
         <CustomCursor />
-        <NextDevtoolsPolish />
+        {process.env.NODE_ENV === "development" && <NextDevtoolsPolish />}
         {children}
       </body>
     </html>

@@ -176,39 +176,7 @@ export function VikkiDiagram() {
   );
 }
 
-export function InsuranceDiagram() {
-  return (
-    <svg viewBox="0 0 800 400" className="h-auto w-full" role="img" aria-label="Insurance enterprise platform architecture">
-      <Defs />
-      <Box x={20} y={40} w={150} h={60} label="Business Users" sub="3 international clients" />
-      <Arrow x1={170} y1={70} x2={225} y2={70} />
-      <Box x={230} y={40} w={170} h={60} label="Web Platform" sub="Spring MVC" />
-      <Arrow x1={400} y1={70} x2={455} y2={70} />
-
-      <rect x={460} y={20} width={190} height={160} rx={16} className="fill-surface-2 stroke-border-soft" strokeWidth={1.5} />
-      <text x={555} y={44} textAnchor="middle" className="fill-foreground text-[13px] font-semibold">
-        Domain Services
-      </text>
-      <Box x={480} y={58} w={150} h={38} label="Policy Management" />
-      <Box x={480} y={104} w={150} h={38} label="Claims Processing" />
-      <text x={555} y={166} textAnchor="middle" className="fill-muted text-[10px]">
-        Spring Boot · Hibernate / JPA
-      </text>
-
-      <Arrow x1={650} y1={100} x2={705} y2={100} />
-      <Box x={660} y={70} w={120} h={60} label="SQL Server" sub="tuned queries · indexes" />
-
-      <Box x={230} y={250} w={200} h={60} label="Quartz Batch Jobs" sub="nightly policy & claims runs" accent />
-      <Arrow x1={430} y1={280} x2={520} y2={184} />
-
-      <Box x={490} y={250} w={200} h={60} label="JasperReports" sub="operational reporting" />
-      <Arrow x1={590} y1={248} x2={590} y2={184} dashed />
-    </svg>
-  );
-}
-
 export const diagramBySlug: Record<string, () => React.ReactElement> = {
   "core-banking-microservice-platform": CoreBankingDiagram,
   "vikki-bank-core-banking": VikkiDiagram,
-  "insurance-enterprise-platforms": InsuranceDiagram,
 };

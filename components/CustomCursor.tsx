@@ -25,15 +25,15 @@ const cursorAssets = {
 function getSavedCursorMode(): CursorMode {
   try {
     const saved = window.localStorage.getItem(cursorStorageKey);
-    return cursorModes.includes(saved as CursorMode) ? (saved as CursorMode) : "paw";
+    return cursorModes.includes(saved as CursorMode) ? (saved as CursorMode) : "native";
   } catch {
-    return "paw";
+    return "native";
   }
 }
 
 export default function CustomCursor() {
   const [enabled, setEnabled] = useState(false);
-  const [mode, setMode] = useState<CursorMode>("paw");
+  const [mode, setMode] = useState<CursorMode>("native");
   const [cursor, setCursor] = useState<CursorState>({
     x: -100,
     y: -100,

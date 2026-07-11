@@ -408,9 +408,9 @@ const devtoolsCss = `
 function getSavedCursorMode(): CursorMode {
   try {
     const saved = window.localStorage.getItem(CURSOR_STORAGE_KEY);
-    return cursorModeOptions.some((mode) => mode.value === saved) ? (saved as CursorMode) : "paw";
+    return cursorModeOptions.some((mode) => mode.value === saved) ? (saved as CursorMode) : "native";
   } catch {
-    return "paw";
+    return "native";
   }
 }
 
@@ -544,7 +544,7 @@ function syncCursorPickers(root: ShadowRoot) {
 
   root.querySelectorAll<HTMLElement>(`[${CURSOR_PICKER_ATTR}="true"]`).forEach((picker) => {
     const selectedLabel =
-      cursorModeOptions.find((mode) => mode.value === selectedMode)?.label || "Paw";
+      cursorModeOptions.find((mode) => mode.value === selectedMode)?.label || "Native";
     const value = picker.querySelector<HTMLElement>(".portfolio-cursor-picker-value");
     if (value) value.textContent = selectedLabel;
 

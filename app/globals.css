@@ -81,10 +81,9 @@ body {
   overflow-x: clip;
 }
 
-body > :not(.cursor-reactive-bg):not(.custom-cursor) {
-  position: relative;
-  z-index: 1;
-}
+/* The reactive background sits below all body content (body is isolated),
+   without forcing a z-index onto every direct child — that would override
+   Tailwind z-* utilities on the sticky header and its dropdowns. */
 
 ::selection {
   background: var(--accent);
@@ -211,7 +210,7 @@ body > :not(.cursor-reactive-bg):not(.custom-cursor) {
 .cursor-reactive-bg {
   position: fixed;
   inset: -8vmax;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
   background:
     radial-gradient(
